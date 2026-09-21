@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Veil — protected screen sessions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header><a class="brand" href="/"><span class="mark"><i></i><i></i><i></i></span>VEIL</a><div class="meta"><b id="dot"></b><span id="state">STANDBY</span><span class="sep"></span><span id="clock">00:00</span></div></header>
+<main>
+<section class="intro"><div><p class="eyebrow">PRIVATE SCREEN SESSION / 001</p><h1>Show the work.<br><em>Hide the secrets.</em></h1></div><p class="copy">Veil watches the pixels you present, finds exposed credentials and personal data, and masks only the dangerous regions before they reach your recording.</p></section>
+<section class="workspace">
+<div class="stage"><div class="stagebar"><span><b class="live"></b> PROTECTED PREVIEW</span><span id="frame">NO SIGNAL</span></div>
+<div class="viewport"><video id="source" autoplay muted playsinline></video><canvas id="output"></canvas><div class="idle" id="idle"><strong>Nothing is being captured</strong><span>Start a protected session to begin.</span></div><div class="scan"></div></div>
+<div class="stagefoot"><span>LOCAL PROCESSING</span><span>NO CLOUD VIDEO</span><span id="maskState">MASKING OFF</span></div></div>
+<aside>
+<div class="railblock"><p class="label">EXPOSURE</p><div class="risk"><strong id="risk">—</strong><div><span>/ 100</span><small id="riskText">WAITING</small></div></div><div class="track"><i id="bar"></i></div></div>
+<div class="railblock findings"><div class="sect"><p class="label">MASKED REGIONS</p><b id="count">00</b></div><div id="findings"><p class="empty">No regions identified.</p></div></div>
+<div class="railblock controls"><p class="label">MASK STYLE</p><div class="modes"><button class="active" data-mode="blur">BLUR</button><button data-mode="redact">REDACT</button><button data-mode="pixel">PIXEL</button></div>
+<button class="primary" id="start">START PROTECTED SESSION <span>↗</span></button>
+<div class="twins"><button id="record" disabled>● RECORD</button><button id="present" disabled>FULL VIEW</button></div><button class="end" id="stop" disabled>END SESSION</button></div>
+</aside></section>
+<section class="notes"><span>01</span><p>Choose the screen or window you want to present.</p><span>02</span><p>Veil detects sensitive regions locally.</p><span>03</span><p>The protected canvas is what you record or share.</p></section>
+</main><footer><span>VEIL / 2026</span><span>CAPTURE · DETECT · MASK · PRESENT</span><span>FASTAPI · OPENCV · OCR</span></footer>
+<script src="/static/app.js"></script>
+</body></html>
