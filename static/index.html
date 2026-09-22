@@ -10,7 +10,7 @@
 <body>
 <header><a class="brand" href="/"><span class="mark"><i></i><i></i><i></i></span>VEIL</a><div class="meta"><b id="dot"></b><span id="state">STANDBY</span><span class="sep"></span><span id="clock">00:00</span></div></header>
 <main>
-<section class="intro"><div><p class="eyebrow">PRIVATE SCREEN SESSION / 001</p><h1>Show the work.<br><em>Hide the secrets.</em></h1></div><p class="copy">Veil watches the pixels you present, finds exposed credentials and personal data, and masks only the dangerous regions before they reach your recording.</p></section>
+<section class="intro"><div><p class="eyebrow">PRIVATE SCREEN SESSION / 001</p><h1>Show the work.<br><em>Hide the secrets.</em></h1></div><p class="copy">Veil creates a protected presentation surface between your screen and your audience. It scans before sharing, masks sensitive regions, and records only the protected canvas.</p></section>
 <section class="workspace">
 <div class="stage"><div class="stagebar"><span><b class="live"></b> PROTECTED PREVIEW</span><span id="frame">NO SIGNAL</span></div>
 <div class="viewport"><video id="source" autoplay muted playsinline></video><canvas id="output"></canvas><div class="idle" id="idle"><strong>Nothing is being captured</strong><span>Start a protected session to begin.</span></div><div class="scan"></div></div>
@@ -21,8 +21,12 @@
 <div class="railblock controls"><p class="label">MASK STYLE</p><div class="modes"><button class="active" data-mode="blur">BLUR</button><button data-mode="redact">REDACT</button><button data-mode="pixel">PIXEL</button></div>
 <button class="primary" id="start">START PROTECTED SESSION <span>↗</span></button>
 <div class="twins"><button id="record" disabled>● RECORD</button><button id="present" disabled>FULL VIEW</button></div><button class="end" id="stop" disabled>END SESSION</button></div>
-</aside></section>
-<section class="notes"><span>01</span><p>Choose the screen or window you want to present.</p><span>02</span><p>Veil detects sensitive regions locally.</p><span>03</span><p>The protected canvas is what you record or share.</p></section>
-</main><footer><span>VEIL / 2026</span><span>CAPTURE · DETECT · MASK · PRESENT</span><span>FASTAPI · OPENCV · OCR</span></footer>
+<div class="share-hint" id="shareHint"><b>SHARE THIS, NOT YOUR SOURCE</b><span>In Zoom / Meet / Teams, share the Veil Protected Output window. Do not share the original screen or source window.</span></div>
+</aside>
+</section>
+<section class="notes"><span>01</span><p>Choose the screen or window you want to protect.</p><span>02</span><p>Veil performs a pre-flight scan before protected mode.</p><span>03</span><p>Share only the protected output with your audience.</p></section>
+</main>
+<div class="preflight" id="preflight"><div class="preflight-card"><p class="label">VEIL PREFLIGHT / SOURCE CHECK</p><strong id="preflightState" class="scanning">SCANNING SOURCE</strong><p id="preflightDetail">Veil is checking the selected source before protected mode starts.</p><div class="preflight-rule"></div><div class="preflight-actions"><button id="continueBtn" disabled>ENTER PROTECTED MODE ↗</button></div></div></div>
+<footer><span>VEIL / 2026</span><span>CAPTURE · SCAN · MASK · PRESENT</span><span>FASTAPI · OPENCV · OCR</span></footer>
 <script src="/static/app.js"></script>
 </body></html>
