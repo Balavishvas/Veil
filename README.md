@@ -2,15 +2,15 @@
 
 **Show the work. Hide the secrets.**
 
-Veil is a local-first screen protection tool for presentations and recordings. It captures a selected screen/window, detects sensitive text with OCR and pattern matching, and masks only the exposed regions in a protected preview.
+Veil is a local-first privacy layer for presentations and recordings. It captures a selected screen/window, performs a pre-flight scan, detects sensitive text with OCR and pattern matching, and masks exposed regions on a protected output canvas.
 
-## Workflow
+## The actual workflow
 
-**Capture → Detect → Mask → Present**
+**Choose source → Pre-flight scan → Protected output → Share the Veil window**
 
-The original desktop is never modified. Veil creates a protected canvas that can be recorded or opened in a separate presentation window.
+The important rule is: **your audience must receive the protected output, not the original screen.** Veil does not currently intercept Zoom, Meet, Teams, or another app's native screen-share pipeline.
 
-## Protection
+## What the prototype protects
 
 - Email addresses
 - JWT-shaped tokens
@@ -19,14 +19,21 @@ The original desktop is never modified. Veil creates a protected canvas that can
 - Card-like numbers
 - Password/API key/secret/token assignment patterns
 - Blur, redact, and pixelate modes
-- Live protected preview
-- WebM recording
-- Protected presentation window
+- Pre-flight scan before protected mode
+- Short temporal mask persistence to reduce flicker
+- WebM recording from the protected canvas
+- Separate protected presentation window
 - Local FastAPI + OpenCV + Tesseract pipeline
 
 ## Run
 
-Install Tesseract OCR and ensure `tesseract --version` works.
+Install Tesseract OCR and verify:
+
+```bash
+tesseract --version
+```
+
+Then:
 
 ```bash
 python -m venv venv
@@ -37,13 +44,18 @@ uvicorn app.main:app --reload
 
 Open `http://127.0.0.1:8000`.
 
-Click **START PROTECTED SESSION**, choose the screen/window to capture, and use the protected preview. **RECORD** records the masked canvas, not the raw screen.
+1. Click **START PROTECTED SESSION**.
+2. Select the screen/window to protect.
+3. Wait for the **VEIL PREFLIGHT** scan.
+4. Continue into protected mode.
+5. Click **FULL VIEW** to open the protected output.
+6. In Zoom/Meet/Teams, share **that Veil output window** — never the original source.
 
-## Important
+## Important safety limitation
 
-This is an early prototype. OCR and pattern matching are heuristic and can miss sensitive content or create false positives. Do not treat Veil as a guarantee that every secret will be hidden.
+This is still a prototype, not a guarantee of confidentiality. OCR and pattern matching are heuristic and can miss sensitive content or produce false positives. The browser capture API also cannot transparently replace another application's native screen-share source.
 
-Captured frames are sent to the local FastAPI process for OCR. There is no intentional third-party cloud video upload.
+For real confidential meetings, verify the protected output before sharing and use test/fake secrets first.
 
 ## Stack
 
